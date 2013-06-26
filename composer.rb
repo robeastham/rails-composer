@@ -833,7 +833,7 @@ add_gem 'protected_attributes' if Rails::VERSION::MAJOR.to_s == "4"
 
 ## Database Adapter
 gsub_file 'Gemfile', /gem 'sqlite3'\n/, '' unless prefer :database, 'sqlite'
-add_gem 'mongoid' if prefer :orm, 'mongoid'
+add_gem 'mongoid', :git => 'git@github.com:mongoid/mongoid.git' if prefer :orm, 'mongoid'
 gsub_file 'Gemfile', /gem 'pg'.*/, ''
 add_gem 'pg' if prefer :database, 'postgresql'
 gsub_file 'Gemfile', /gem 'mysql2'.*/, ''
@@ -903,8 +903,8 @@ end
 add_gem 'sendgrid' if prefer :email, 'sendgrid'
 
 ## Authentication (Devise)
-add_gem 'devise' if prefer :authentication, 'devise'
-add_gem 'devise_invitable' if prefer :devise_modules, 'invitable'
+add_gem 'devise' , '~> 3.0.0.rc' if prefer :authentication, 'devise'
+add_gem 'devise_invitable', :git => 'git@github.com:scambra/devise_invitable.git', :branch => 'rails4' if prefer :devise_modules, 'invitable'
 
 ## Authentication (OmniAuth)
 add_gem 'omniauth' if prefer :authentication, 'omniauth'
