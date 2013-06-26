@@ -889,7 +889,7 @@ add_gem 'machinist', :group => :test if prefer :fixtures, 'machinist'
 
 ## Front-end Framework
 add_gem 'bootstrap-sass' if prefer :bootstrap, 'sass'
-add_gem 'compass-rails' if prefer :frontend, 'foundation'
+add_gem 'compass-rails', :github => 'milgner/compass-rails', :ref => '1749c06f15dc4b058427e7969810457213647fb8' if prefer :frontend, 'foundation'
 add_gem 'zurb-foundation' if prefer :frontend, 'foundation'
 if prefer :bootstrap, 'less'
   add_gem 'less-rails'
@@ -1021,7 +1021,7 @@ after_bundler do
       say_wizard "recipe installing simple_form for use with Twitter Bootstrap"
       generate 'simple_form:install --bootstrap'
     elsif prefer :frontend, 'foundation'
-        say_wizard "recipe installing simple_form for use with Twitter Bootstrap"
+        say_wizard "recipe installing simple_form for use with Zurb Foundation"
         generate 'simple_form:install --foundation'
     else
       say_wizard "recipe installing simple_form"
