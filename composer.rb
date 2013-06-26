@@ -889,14 +889,14 @@ add_gem 'machinist', :group => :test if prefer :fixtures, 'machinist'
 
 ## Front-end Framework
 add_gem 'bootstrap-sass' if prefer :bootstrap, 'sass'
-add_gem 'compass-rails', :group => :assets if prefer :frontend, 'foundation'
-add_gem 'zurb-foundation', :group => :assets if prefer :frontend, 'foundation'
+add_gem 'compass-rails' if prefer :frontend, 'foundation'
+add_gem 'zurb-foundation' if prefer :frontend, 'foundation'
 if prefer :bootstrap, 'less'
-  add_gem 'less-rails', :group => :assets
-  add_gem 'twitter-bootstrap-rails', :group => :assets
+  add_gem 'less-rails'
+  add_gem 'twitter-bootstrap-rails'
   # install gem 'therubyracer' to use Less
   add_gem 'libv8'
-  add_gem 'therubyracer', :group => :assets, :platform => :ruby, :require => 'v8'
+  add_gem 'therubyracer', :platform => :ruby, :require => 'v8'
 end
 
 ## Email
@@ -1020,6 +1020,9 @@ after_bundler do
     if prefer :frontend, 'bootstrap'
       say_wizard "recipe installing simple_form for use with Twitter Bootstrap"
       generate 'simple_form:install --bootstrap'
+    elsif prefer :frontend, 'foundation'
+        say_wizard "recipe installing simple_form for use with Twitter Bootstrap"
+        generate 'simple_form:install --foundation'
     else
       say_wizard "recipe installing simple_form"
       generate 'simple_form:install'
@@ -2468,7 +2471,7 @@ case RbConfig::CONFIG['host_os']
       unless prefer :bootstrap, 'less'
         say_wizard "recipe adding 'therubyracer' JavaScript runtime gem"
         add_gem 'libv8'
-        add_gem 'therubyracer', :group => :assets, :platform => :ruby, :require => 'v8'
+        add_gem 'therubyracer', :platform => :ruby, :require => 'v8'
       end
     end
 end
